@@ -1,0 +1,75 @@
+﻿@model Email.Models.EmailClass
+
+@{
+    ViewBag.Title = "Notifica a alguien cercano";
+}
+<div class="row">
+    <div class="col-md-6">
+        <center>
+            <h2>Notifica a algún asistente cercano</h2>
+            
+            <hr/>
+            @using (Html.BeginForm("Index", "Gmailsend", FormMethod.Post, new {enctype = "multipart/form-data"}))
+            {
+                <table class="table table-striped">
+                    <tr>
+
+                        <td>
+                            <label>Para : </label>
+                        </td>
+                        <td>@Html.TextBoxFor(model => model.to)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Asunto : </label>
+                        </td>
+                        <td>@Html.TextBoxFor(model => model.subject)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label> Mensaje :</label>
+                        </td>
+                        <td>@Html.TextAreaFor(model => model.body, new {rows = "13", cols = "25"})</td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Enviar notificacion"/></td>
+
+                    </tr>
+                </table>
+
+                <h1>@ViewBag.message</h1>
+            }
+        </center>
+    </div>
+    
+    <div class="col-md-6">
+        <h2>Mapa de la zona</h2>
+        <hr/>
+        <div id="map" style="height: 400px; width: 400px;"></div>
+        <script>
+            (function(exports) {
+                "use strict";
+
+                function initMap() {
+                    exports.map = new google.maps.Map(document.getElementById("map"),
+                        {
+                            center: {
+                                lat: -33.4519943,
+                                lng: -70.6876595
+                            },
+                            zoom: 10.5
+                        });
+                }
+
+                exports.initMap = initMap;
+            })((this.window = this.window || {}));
+        </script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjRi3kEvuBCypWnLREDbxXHdVVAisx-rM&callback=initMap&libraries=&v=weekly"
+            defer></script>
+    </div>
+
+</div>
+
+
+
