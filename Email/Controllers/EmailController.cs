@@ -26,7 +26,7 @@ namespace Email.Controllers
             smtp.UseDefaultCredentials = true;
             smtp.Port = 587;
             smtp.EnableSsl = true;
-            smtp.Credentials = new System.Net.NetworkCredential("m.friasq@gmail.com","m.friasq13");
+            smtp.Credentials = new System.Net.NetworkCredential("EmailAUsar","PasswordEmail");
             smtp.Send(mm);
             return Ok();
         }
