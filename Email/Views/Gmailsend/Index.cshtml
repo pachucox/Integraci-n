@@ -30,7 +30,7 @@
                         <td>
                             <label> Mensaje :</label>
                         </td>
-                        <td>@Html.TextAreaFor(model => model.body, new {rows = "13", cols = "25",Value ="Ayuda"})</td>
+                        <td>@Html.TextAreaFor(model => model.body, new {rows = "13", cols = "25"})</td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Enviar notificacion"/></td>
@@ -60,6 +60,7 @@
                 // Try HTML5 geolocation.
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function(position) {
+                         document.querySelector("#body").textContent= "Estoy en Longitud" +position.coords.longitude + " Latitud " + position.coords.latitude
                         var pos = {
                             lat: position.coords.latitude,
                             lng: position.coords.longitude
